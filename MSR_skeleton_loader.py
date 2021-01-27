@@ -10,7 +10,7 @@ class DataGenerator(keras.utils.Sequence):
         self.path = './LSTM_poses/'
         self.list_IDs = [i.strip() for i in open(path_video_files).readlines()]       
         self.n_classes = 16
-        self.step = 10
+        self.step = 30
         self.dim = 60
         self.on_epoch_end()
 
@@ -56,7 +56,7 @@ class DataGenerator(keras.utils.Sequence):
                padded_file = unpadded_file[0:len(unpadded_file) - extra_frames,:]
             else:
                [row, col] = unpadded_file.shape
-               alpha = (len(unpadded_file)/self.step) + 1
+               alpha = int(len(unpadded_file)/self.step) + 1
                req_pad = np.zeros(((alpha * self.step)-row, col))
                padded_file = np.vstack((unpadded_file, req_pad))
             splitted_file = np.split(padded_file, self.step)
