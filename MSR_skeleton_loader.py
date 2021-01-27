@@ -7,7 +7,7 @@ class DataGenerator(keras.utils.Sequence):
     def __init__(self, path_video_files, batch_size=32):
         'Initialization'
         self.batch_size = batch_size
-        self.path = '/data/stars/user/sdas/MSRDailyActivity3D/LSTM_poses/'
+        self.path = './LSTM_poses/'
         self.list_IDs = [i.strip() for i in open(path_video_files).readlines()]       
         self.n_classes = 16
         self.step = 10
